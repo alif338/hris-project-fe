@@ -1,6 +1,6 @@
 export default function DashboardAdminPage() {
   return (
-    <div className="pl-4">
+    <div className="pl-4 min-h-lvh">
       {/* Header */}
       <h1 className="text-4xl leading-relaxed border-b">Dashboard Admin</h1>
 

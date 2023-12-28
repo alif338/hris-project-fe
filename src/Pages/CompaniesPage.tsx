@@ -25,6 +25,7 @@ export default function CompaniesPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     setLoading(true);
+    setCompanies([]);
     axios
       .get(`/api/company/list?search=${search}&limit=${limit}&page=${page}`, {
         headers: {
@@ -50,7 +51,7 @@ export default function CompaniesPage() {
   };
 
   return (
-    <div className="px-4">
+    <div className="px-4 min-h-lvh">
       {/* Headers */}
       <h1 className="text-4xl leading-relaxed border-b">Companies Page</h1>
 
@@ -190,7 +191,7 @@ export default function CompaniesPage() {
                       href="#"
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
-                      Edit user
+                      Edit company
                     </a>
                   </td>
                 </tr>
@@ -198,7 +199,12 @@ export default function CompaniesPage() {
             </tbody>
           </table>
         </div>
-        <Pagination limit={limit} page={page} count={count} />
+        <Pagination
+          limit={limit}
+          page={page}
+          count={count}
+          onPageMove={(i) => setPage(i)}
+        />
       </div>
     </div>
   );

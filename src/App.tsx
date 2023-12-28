@@ -45,8 +45,8 @@ function App() {
 
           <Sidebar />
 
-          <div className="p-4 sm:ml-64 bg-gray-900">
-            <div className="px-4 h-lvh mt-14 dark:text-white">
+          <div className="p-4 sm:ml-64 h-full bg-gray-900">
+            <div className="px-4 mt-14 dark:text-white">
               <Routes>
                 <Route path="/" element={<DefaultPage />} />
                 <Route path="/about" element={<AboutPage />} />

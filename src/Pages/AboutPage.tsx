@@ -2,7 +2,7 @@ import Logo from "../assets/images/app.png";
 
 export default function AboutPage() {
   return (
-    <div className="px-4">
+    <div className="px-4 h-lvh">
       {/* Header */}
       <h1 className="text-4xl leading-relaxed border-b">About</h1>
 

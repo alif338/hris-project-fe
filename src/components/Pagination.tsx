@@ -2,25 +2,42 @@ type PaginationProps = {
   limit: number;
   page: number;
   count: number;
-}
+  onPageMove: (i: number) => void;
+};
 
 export default function Pagination(props: PaginationProps) {
+  const movePage = (i: number) => {
+    if (i >= 1 && (i <= Math.ceil(props.count / props.limit))) {
+      props.onPageMove(i);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center mt-6">
       {/* Help Text */}
       <span className="text-sm text-gray-700 dark:text-gray-400">
         Showing{" "}
-        <span className="font-semibold text-gray-900 dark:text-white">{props.page}</span>{" "}
+        <span className="font-semibold text-gray-900 dark:text-white">
+          {(props.page - 1) * props.limit + 1}
+        </span>{" "}
         to{" "}
-        <span className="font-semibold text-gray-900 dark:text-white">{Math.min(props.limit * props.page, props.count)}</span>{" "}
+        <span className="font-semibold text-gray-900 dark:text-white">
+          {Math.min(props.limit * props.page, props.count)}
+        </span>{" "}
         of{" "}
-        <span className="font-semibold text-gray-900 dark:text-white">{Math.min(props.count, props.limit)}</span>{" "}
+        <span className="font-semibold text-gray-900 dark:text-white">
+          {props.count}
+        </span>{" "}
         Entries
       </span>
 
       {/* Buttons */}
       <div className="inline-flex mt-2 xs:mt-0">
-        <button className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        <button
+          className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          disabled={(props.page - 1) * props.limit === 0}
+          onClick={() => movePage(props.page - 1)}
+        >
           <svg
             className="w-3.5 h-3.5 me-2 rtl:rotate-180"
             aria-hidden="true"
@@ -40,7 +57,10 @@ export default function Pagination(props: PaginationProps) {
         </button>
         <button
           className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          disabled={false}
+          disabled={
+            Math.min(props.limit * props.page, props.count) === props.count
+          }
+          onClick={() => movePage(props.page + 1)}
         >
           Next
           <svg
