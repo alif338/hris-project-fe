@@ -1,6 +1,6 @@
 export default function EmployeesPage() {
   return (
-    <div className="px-4">
+    <div className="px-4 min-h-lvh">
       {/* Header */}
       <h1 className="text-4xl leading-relaxed border-b">Employees Page</h1>
 

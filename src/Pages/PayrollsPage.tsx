@@ -1,6 +1,6 @@
 export default function PayrollsPage() {
   return (
-    <div className="px-4">
+    <div className="px-4 min-h-lvh">
       {/* Headers */}
       <h1 className="text-4xl leading-relaxed border-b">Payrolls Page</h1>
 
