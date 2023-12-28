@@ -46,7 +46,7 @@ export default function DefaultPage() {
         <p>Choose any menus at Sidebar left for begin</p>
         <p>{"<<<"}</p>
         <br />
-        <h1 className="italic">TODO of App Features (By Role)</h1>
+        <h1 className="italic">TODO of App Features by Role (not finished yet 🙁)</h1>
         <ol role="list" className="list-decimal list-inside">
           <li>
             Super Admin
